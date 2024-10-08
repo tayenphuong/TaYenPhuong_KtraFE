@@ -1,0 +1,408 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<link href="~/Content/pic/all.min.css" rel="stylesheet" />
+
+<script language="JavaScript">
+    const pricePerItem = 27740000;
+
+    // Hàm cập nhật tổng giá trị
+    function updateTotalPrice(quantity) {
+        const totalPrice = pricePerItem * quantity;
+        document.getElementById('totalPrice').textContent = totalPrice.toLocaleString('vi-VN') + '₫';
+    }
+
+    // Hàm xử lý khi bấm nút "+"
+    function increaseQuantity() {
+        let currentQuantity = parseInt(document.getElementById('quantity').value);
+        currentQuantity++;
+        document.getElementById('quantity').value = currentQuantity;
+        updateTotalPrice(currentQuantity);
+        // Bỏ disable nút trừ khi số lượng > 1
+        document.getElementById('minusBtn').classList.remove('disabled');
+    }
+
+    // Hàm xử lý khi bấm nút "-"
+    function decreaseQuantity() {
+        let currentQuantity = parseInt(document.getElementById('quantity').value);
+        if (currentQuantity > 1) {
+            currentQuantity--;
+            document.getElementById('quantity').value = currentQuantity;
+            updateTotalPrice(currentQuantity);
+        }
+        // Khi số lượng là 1, disable nút trừ
+        if (currentQuantity === 1) {
+            document.getElementById('minusBtn').classList.add('disabled');
+        }
+    }
+
+    // Thêm sự kiện khi trang load để kiểm tra nút trừ
+    window.onload = function () {
+        let currentQuantity = parseInt(document.getElementById('quantity').value);
+        if (currentQuantity === 1) {
+            document.getElementById('minusBtn').classList.add('disabled');
+        }
+    }
+
+    
+
+</script>
+
+<style>
+    section {
+        display: flex;
+        gap: 24px;
+        margin-top:44px;
+    }
+                            /*Phan ben trai*/
+    .prdPic {
+        width: 400px;
+        height: 515px;
+        background-color: white;
+        border-radius: 8px;
+        align-items: center;
+        margin-left: 64px;
+    }
+
+        .prdPic img {
+            width: 365px;
+            height: 373px;
+            border: 1px solid #cccc;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+    .slider {
+        height: 50px;
+        display: flex;
+        flex-direction:row;
+        margin-left: 20px;
+    }
+
+    .slider_pic {
+        width: 55px;
+        height: 50px;
+        border: 1px solid #cccc;
+        border-radius: 8px;
+        margin-right: 8px;
+    }
+                                      /*Phần chính giữa : content*/
+
+                                    /* Product Detail */
+    .prdDetail {
+   
+        width: 585px;
+        height: 335px;
+        background-color: white;
+       
+        border-radius: 8px;
+    }
+    
+
+    .Detail_intro {
+        padding-top:10px;
+        margin-left:15px;
+        display: flex;
+        gap: 10px;
+        align-items:center;
+    }
+    .Detail_intro img{
+        width:300px;
+        height:auto;
+    }
+    .Detail_intro p,a{
+        font-size: 15px;
+        margin:1px;
+        text-decoration:none;
+    }
+   
+
+    .prd_Evaluate{
+      
+       block-size:fit-content;
+       display:flex;
+       flex-direction:row;
+       gap:6px;
+     
+    }
+    .prd_Evaluate img {
+        
+        height: 50px;
+        width: auto;
+      
+    }
+    .prd_Evaluate a{
+        margin-top:18px;
+        margin-left:15px;
+        font-weight:bold;
+        font-size:18px;
+    }
+    .prd_Evaluate p{
+        margin-right:5px;
+        font-size:17px;
+        color:#cccc;
+        border-left:1px solid #cccc;
+    }
+
+    .Prd_Name{
+        margin: 5px 15px
+    }
+    .Prd_Price{
+        margin: 0px 15px;
+        font-size:25px;
+    }
+                                            /*Product Option*/
+    .Prd_Option{
+       margin-left:15px;
+       display:flex;
+       flex-direction:row;
+       gap:15px;
+    }
+    .Prd_Option_Pic {
+        width: auto;
+        height: auto;
+
+        border: 1px solid #cccc;
+        border-radius: 8px;
+
+        font-size: 15px;
+
+        padding:5px 10px;
+        display:flex;
+        
+
+        gap:5px;
+    }
+
+
+    .Prd_Option_Pic img{
+        width:42px;
+        height:42px;
+    }
+    .Prd_Option_Pic span{
+        margin-top: 12px;
+    }
+    .Prd_Option_Ram {
+        width: 95px;
+        height: 20px;
+        border: 1px solid #cccc;
+        border-radius: 8px;
+        font-size: 15px;
+        padding: 5px;
+        text-align:center;
+        display:inline-flex;
+        margin-left:15px;
+       
+    }
+
+
+                                          /*Shipping Infomation*/
+    .ShippingInfo {
+        margin-top: 17px;
+        width: 585px;
+        height: 335px;
+        background-color: white;
+        
+        border-radius: 8px;
+    }
+
+    .Buying {
+        width: 363px;
+        height: 465px;
+        background-color: white;
+        border-radius: 8px;
+       
+    }
+        .Buying img {
+            padding: 10px 5px;
+            height: auto;
+            width: 335px;
+            align-content: center;
+            margin-left:15px;
+        }
+        .PrdwillBuy{
+            display:flex;
+            gap:5px;
+            font-size:25px;
+            width:auto;
+            height:auto;
+        }
+        .PrdwillBuy img{
+            width:48px;
+            height:50px;
+        }
+        .Amount_prd{
+            display:flex;
+            flex-direction:row;
+            gap: 5px;
+        }
+        .Amount_prd button{
+            border:1px solid #cccc;
+            border-radius:8px;
+            background-color:white;
+            width:40px;
+            height:30px;
+            
+        }
+            .Amount_prd input {
+                width: 40px;
+                height:30px;
+                text-align:center;
+                border:1px solid #cccc;
+
+                border-radius: 6px;
+            }
+        .Buying_Option{
+            margin-left:20px;
+            
+        }
+        
+            .Buying_Option button {
+                margin-top: 5px;
+                width: 320px;
+                height: 41px;
+                border-radius: 8px;
+                font-size: 20px;
+            }
+            .Buying span{
+                font-size: 25px;
+                margin-left:20px;
+            }
+            
+   
+</style>
+
+
+<section>
+
+    <div class="prdPic">
+        <center>
+            <div class=" mainprd"><img src="~/Content/pic/prd1.png" /></div>
+
+            <div class="slider">
+                <div class="slider_pic"></div>
+                <div class="slider_pic"></div>
+                <div class="slider_pic"></div>
+                <div class="slider_pic"></div>
+                <div class="slider_pic"></div>
+                <div class="slider_pic"></div>
+
+
+            </div>
+            <hr style="color:#cccc" />
+        </center>
+
+
+    </div>
+
+   
+
+    <div class="Detail">
+
+        <div class="prdDetail">
+
+            <div class="Detail_intro">
+                <img src="~/Content/pic/pic.png" />
+                <p>Thương hiệu <span>  <a href="#" style="color:dodgerblue"> Apple </a></span>  </p>
+            </div>
+
+            <h6 class="Prd_Name"> MacBook Air M3 2024 13 inch </h6>
+
+            <div class="prd_Evaluate">
+                <a href="#" style="color:black"> 4.0 </a>  <img src="~/Content/pic/star.png" /> <p> Đã bán 10 </p>
+            </div>
+                
+
+            <h6 class="Prd_Price" style="color:red"> 27.740.000<sup>đ</sup></h6>
+            <h5 style="font-size: 15px; margin:20px 0px 0px 15px" >Màu</h5>
+
+
+        <div class="Prd_Option">
+
+            
+
+            <div class="Prd_Option_Pic">
+
+
+                <img src="~/Content/pic/prd2.png" />
+                <span>Midnight</span>
+            </div>
+
+
+            <div class="Prd_Option_Pic">
+
+                <img src="~/Content/pic/prd1.png" />
+                <span>Silver</span>
+            </div>
+
+
+            <div class="Prd_Option_Pic">
+
+                <img src="~/Content/pic/prd3.1.png" />
+                <span>Space Gray</span>
+            </div>
+
+            <div class="Prd_Option_Pic">
+
+                <img src="~/Content/pic/prd4.png" />
+                <span>Starlight</span>
+            </div>
+
+        </div>
+
+
+            <h5 style="font-size:15px;margin:20px 0px 0px 15px"> Kích cỡ</h5>
+            <div class="Prd_Option_Ram">
+                <p style="margin:auto;font-weight:bold">8GB/ 256GB</p>
+            </div>
+
+        </div>
+
+        <div class="ShippingInfo">
+            <h5> Thông tin vận chuyển</h5>
+
+        </div>
+        <div class="rightside"></div>
+    </div>
+
+
+    <div class="Buying">
+        <img src="~/Content/pic/Screenshot 2024-10-08 075359.png" />
+        <hr />
+
+        <div class="PrdwillBuy">
+            <img src="~/Content/pic/prd1.png" /> <h6 style="margin:25px 0px">Sliver, 8GB/256GB</h6>
+        </div>
+
+        <h5 style="margin:5px 15px;font-size:20px"> Số lượng</h5>
+
+                           @*nut chon so luong san pham *@
+
+        <div class="Amount_prd">
+            <button id="minusBtn" onclick="decreaseQuantity()" style="margin-left:15px">-</button>
+            @*<button class="Amount_prd_var" style="font-size:18px">1</button>*@
+            <input type="number" id="quantity" value="1" readonly>
+
+            <button id="plusBtn" onclick="increaseQuantity()">+</button>
+        </div>
+
+        <h5 style="margin:5px 15px;font-size:20px"> Tạm tính</h5>
+        <span id="totalPrice">27.740.000 ₫</span>
+
+        @*<h5 class="Prd_Amount_Price" style="margin:5px 20px">27.740.000</h5>*@
+        <div class="Buying_Option">
+
+            <button style="background-color: red; border: 1px solid red;color:white">Mua ngay</button>
+            <button style="background-color: white; border: 1px solid deepskyblue;color:deepskyblue">Thêm vào giỏ hàng</button>
+            <button style="background-color: white; border: 1px solid deepskyblue;color:deepskyblue">Mua trả góp - trả sau</button>
+        </div>
+
+
+    </div>
+
+</section>
+
+

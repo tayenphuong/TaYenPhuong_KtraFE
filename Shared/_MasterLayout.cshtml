@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/pic/all.min.css" rel="stylesheet" />
+    
+
+    <style>
+       
+        .content {
+            background-color: #f5f5fa;
+        }
+        .sologan {
+            
+          margin-top:0px;
+            height: 50px;
+            background-color:#EFFFF4;
+           
+        }
+            .sologan h6 {
+                margin-top:0px;
+                text-align: center;
+                font-size:15px;
+            }
+        
+        .logo img{
+           
+            
+            width:100px;
+            height:auto;
+        }
+          .main_top{
+              margin-left:64px;
+              display:flex;
+              gap: 20px;
+              
+             
+          
+          }
+          .search{
+              align-items:center;
+              width:800px;
+              height:40px;
+              display:flex;
+              gap:0px;
+            
+              border: 1px solid #cccc;
+              border-radius:8px;
+              margin-top:10px;
+          }
+          
+          
+          
+        .search input {
+            align-items:center;       
+          
+            width: 90%;
+            height:80%;
+            border:none;
+            outline:none;
+            
+            padding: 0px 7px;
+        }
+        .search button {
+            
+            height: 70%;
+            width: 120px;
+            
+            font-size:15px;
+            background-color:white;
+            
+            border:none;
+            border-left: 0.5px solid #cccc;
+        }
+      
+        nav ul{
+            list-style-type: none;
+            display: flex;
+            
+
+        }
+        nav ul li{
+            margin-left:10px;
+        }
+       
+
+        nav ul img{
+            color:gray;
+            width: 20px;
+            height: auto;
+        }
+            nav ul a {
+                text-decoration: none;
+                font-size:15px;
+            }
+     
+      
+    </style>
+</head>
+
+
+
+<body>
+
+    
+    <div class="top">
+        <div class="sologan">
+            <h6 style="color:forestgreen">Free ship đơn từ 45k, giảm nhiều hơn cùng <span style="color:blue">FREE SHIP</span> XTRA </h6>
+        </div>
+
+
+        <div class="main_top">
+
+            <div class="logo">
+                <img src="~/Content/pic/logo1.png" />
+
+            </div>
+
+                <div class="search">
+                    <input type="text" class="search_place" placeholder="Tìm kiếm tại đây..." />
+                    <button style="color:cornflowerblue"> Tìm kiếm </button>
+
+                </div>
+
+                <nav>
+                    <ul>
+                        <li> <a href="#"> <img src="~/Content/pic/home.png" /> Trang chủ</a></li>
+
+                        <li> <a href="#"> <img src="~/Content/pic/user.png" /> Tài khoản </a>  </li>
+
+                        <li> <a href="#"><img src="~/Content/pic/shop.png" /></a></li>
+                    </ul>
+                </nav>
+
+        </div>
+
+      </div>
+   
+    <hr/>
+
+   
+
+    <div class="content">
+        <hr />
+        @RenderBody()
+    </div>
+</body>
+</html>
